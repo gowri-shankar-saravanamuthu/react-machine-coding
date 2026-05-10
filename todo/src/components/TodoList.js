@@ -39,7 +39,7 @@ export default function TodoList() {
             {
                 todoList.map(item => (
                     <ul>
-                        <li>
+                        <li style={{ display: "flex", gap: '10px' }}>
                             <input type="checkbox" name="todo-item" id="todo-item" checked={item.completed} onClick={() => taskComplete(item.id)} />
                             <span style={item.completed ? { textDecoration: 'line-through' } : {}}>{item.text}</span>
                             <button onClick={() => deleteTask(item.id)}>Delete</button>
