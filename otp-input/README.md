@@ -1,70 +1,145 @@
-# Getting Started with Create React App
+# OTP Input Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A reusable React OTP (One-Time Password) input component that supports **dynamic OTP lengths**, automatic focus management, paste handling, and numeric-only validation.
 
-## Available Scripts
+<img width="800" height="400" alt="ScreenRecording2026-05-10at5 34 40PM-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/4869c549-85f3-46ac-ac2f-afb7cf41330e" />
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Supports **N number of OTP input boxes**
+* Accepts only numeric input
+* Automatically moves focus to the next input
+* Moves focus back on backspace
+* Supports full OTP paste
+* Triggers callback when OTP is fully entered
+* Rejects non-numeric characters
+* Real-time UI updates
+* Reusable and configurable component
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Requirements Implemented
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Render OTP input boxes dynamically based on length
+* Each input accepts only one digit
+* Auto-focus next input after typing
+* Auto-focus previous input on backspace
+* Paste support for complete OTP
+* Trigger `onChangeOTP` callback after all digits are entered
+* Numeric-only validation
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Constraints & Edge Cases
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Only numbers are allowed
+* Backspace on empty input moves focus to previous box
+* Pasting full OTP fills all input boxes correctly
+* Non-numeric input is ignored
+* Each input stores only one digit
+* Supports variable OTP lengths (4, 5, 6, etc.)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* React
+* JavaScript
+* CSS
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```plaintext id="5qj6v6"
+src/
+│
+├── components/
+│   ├── OTPInput.jsx
+│   └── OTPInput.css
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clone the repository:
 
-### Code Splitting
+```bash id="9kg9r4"
+git clone https://github.com/your-username/your-repo-name.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Navigate to the project folder:
 
-### Analyzing the Bundle Size
+```bash id="qjlwmn"
+cd your-repo-name
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Install dependencies:
 
-### Making a Progressive Web App
+```bash id="i6d8my"
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Start the development server:
 
-### Advanced Configuration
+```bash id="6c7c87"
+npm run dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```jsx id="1lbm7d"
+<OTPInput length={6} onChangeOTP={handleOTPChange} />
+```
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Example OTP State
+
+```js id="z6zccv"
+const otp = ["1", "2", "3", "4", "5", "6"];
+```
+
+Combined OTP:
+
+```js id="by1rr2"
+otp.join(""); // "123456"
+```
+
+---
+
+## Example Callback
+
+```js id="l44xb9"
+const handleOTPChange = (otp) => {
+  console.log("Entered OTP:", otp);
+};
+```
+
+---
+
+## Future Improvements
+
+* Masked OTP input
+* Mobile OTP auto-read support
+* Accessibility enhancements
+* Auto-submit on completion
+* Error validation states
+* Resend OTP timer
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+
